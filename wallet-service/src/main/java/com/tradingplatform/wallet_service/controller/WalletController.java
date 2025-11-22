@@ -4,6 +4,7 @@ import com.tradingplatform.wallet_service.dto.*;
 import com.tradingplatform.wallet_service.service.WalletService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WalletController {
 
-    private final WalletService walletService;
+    @Autowired
+    private WalletService walletService;
 
     @GetMapping("/test")
     public ResponseEntity<String> test() {

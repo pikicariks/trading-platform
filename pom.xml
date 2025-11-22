@@ -19,6 +19,7 @@
         <module>api-gateway</module>
         <module>user-service</module>
         <module>wallet-service</module>
+        <module>market-data-service</module>
     </modules>
 
     <properties>
