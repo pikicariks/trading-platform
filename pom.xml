@@ -20,6 +20,7 @@
         <module>user-service</module>
         <module>wallet-service</module>
         <module>market-data-service</module>
+        <module>order-service</module>
     </modules>
 
     <properties>
