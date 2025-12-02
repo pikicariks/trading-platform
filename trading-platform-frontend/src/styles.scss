@@ -1,4 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@include mat.core();
+
+$trading-primary: mat.define-palette(mat.$indigo-palette);
+$trading-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$trading-warn: mat.define-palette(mat.$red-palette);
+
+$trading-theme: mat.define-light-theme((
+  color: (
+    primary: $trading-primary,
+    accent: $trading-accent,
+    warn: $trading-warn,
+  )
+));
+
+@include mat.all-component-themes($trading-theme);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+.text-success {
+  color: #22c55e;
+}
+
+.text-danger {
+  color: #ef4444;
+}
+
+.text-muted {
+  color: #6b7280;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
