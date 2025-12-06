@@ -1,1 +1,36 @@
-<p>dashboard works!</p>
+<mat-toolbar color="primary">
+  <span>Trading Platform</span>
+  <span class="spacer"></span>
+  <span *ngIf="currentUser" class="user-info">
+    Welcome, {{ currentUser.username }}!
+  </span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<div class="dashboard-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Dashboard</mat-card-title>
+      <mat-card-subtitle>Welcome to your trading platform!</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="currentUser">
+        <h2>User Information</h2>
+        <p><strong>Username:</strong> {{ currentUser.username }}</p>
+        <p><strong>Email:</strong> {{ currentUser.email }}</p>
+        <p><strong>Role:</strong> {{ currentUser.role }}</p>
+        <p><strong>Member Since:</strong> {{ currentUser.createdAt | date }}</p>
+      </div>
+      
+      <div class="coming-soon">
+        <h3>Coming Soon:</h3>
+        <ul>
+          <li>Portfolio Overview</li>
+          <li>Stock Search & Trading</li>
+          <li>Order History</li>
+          <li>Real-time Market Data</li>
+        </ul>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

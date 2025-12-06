@@ -1,0 +1,68 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-info {
+  margin-right: 16px;
+  font-weight: 500;
+}
+
+.dashboard-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  mat-card {
+    margin-bottom: 24px;
+
+    mat-card-content {
+      padding: 24px;
+
+      h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+      p {
+        margin: 8px 0;
+        color: #666;
+
+        strong {
+          color: #333;
+          margin-right: 8px;
+        }
+      }
+
+      .coming-soon {
+        margin-top: 32px;
+        padding: 20px;
+        background: #f5f5f5;
+        border-radius: 8px;
+
+        h3 {
+          margin-top: 0;
+          color: #667eea;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+
+          li {
+            padding: 8px 0;
+            color: #666;
+
+            &:before {
+              content: "✓ ";
+              color: #22c55e;
+              font-weight: bold;
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -57,3 +57,21 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
+
+.error-snackbar {
+  background-color: #f44336 !important;
+  color: white !important;
+  
+  .mat-mdc-button {
+    color: white !important;
+  }
+}
+
+.success-snackbar {
+  background-color: #4caf50 !important;
+  color: white !important;
+  
+  .mat-mdc-button {
+    color: white !important;
+  }
+}
