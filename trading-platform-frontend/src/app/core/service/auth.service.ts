@@ -98,8 +98,6 @@ export class AuthService {
   }
 
   private handleAuthSuccess(response: AuthResponse): void {
-      console.log('Auth response:', response); // Debug log
-  console.log('Token:', response.token); // Debug log
   
   if (!response.token) {
     console.error('No token in response!');
