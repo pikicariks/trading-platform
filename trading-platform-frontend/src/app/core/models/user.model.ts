@@ -3,11 +3,12 @@ export interface User {
   username: string;
   email: string;
   role: string;
-  createdAt: Date;
+  isActive?: boolean;
+  createdAt?: Date;
 }
 
 export interface LoginRequest {
-  username: string;
+  usernameOrEmail: string;
   password: string;
 }
 
@@ -20,5 +21,9 @@ export interface RegisterRequest {
 
 export interface AuthResponse {
   token: string;
-  user: User;
+  type?: string;
+  userId?: number;
+  username: string;
+  email: string;
+  role: string;
 }

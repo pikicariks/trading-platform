@@ -13,10 +13,10 @@
           <mat-label>Username</mat-label>
           <input 
             matInput 
-            formControlName="username" 
+            formControlName="usernameOrEmail" 
             placeholder="Enter your username"
-            autocomplete="username">
-          <mat-error *ngIf="username?.hasError('required')">
+            autocomplete="usernameOrEmail">
+          <mat-error *ngIf="usernameOrEmail?.hasError('required')">
             Username is required
           </mat-error>
         </mat-form-field>

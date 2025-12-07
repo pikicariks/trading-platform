@@ -6,17 +6,44 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       routes:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/api/users/**
-          filters:
-            - StripPrefix=2
+            - Path=/api/auth/**,/api/users/**
+        - id: wallet-service
+          uri: lb://wallet-service
+          predicates:
+            - Path=/api/wallet/**
+        - id: market-data-service
+          uri: lb://market-data-service
+          predicates:
+            - Path=/api/market/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/api/orders/**
+        - id: portfolio-service
+          uri: lb://portfolio-service
+          predicates:
+            - Path=/api/portfolio/**
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+              - "http://localhost:4200"
+              - "http://localhost:4200/**"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+              - PATCH
+            allowed-headers:
+              - "*"
+            allow-credentials: true
+            max-age: 3600
 
 eureka:
   client:

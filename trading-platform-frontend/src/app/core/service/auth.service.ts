@@ -98,11 +98,26 @@ export class AuthService {
   }
 
   private handleAuthSuccess(response: AuthResponse): void {
+      console.log('Auth response:', response); // Debug log
+  console.log('Token:', response.token); // Debug log
+  
+  if (!response.token) {
+    console.error('No token in response!');
+    return;
+  }
+
+    const user: User = {
+    id: response.userId || 0,
+    username: response.username,
+    email: response.email,
+    role: response.role
+  };
+
     if (this.isBrowser) {
       localStorage.setItem('token', response.token);
-      localStorage.setItem('user', JSON.stringify(response.user));
+      localStorage.setItem('user', JSON.stringify(user));
     }
-    this.currentUserSubject.next(response.user);
+    this.currentUserSubject.next(user);
   }
 
   private decodeToken(token: string): any {
