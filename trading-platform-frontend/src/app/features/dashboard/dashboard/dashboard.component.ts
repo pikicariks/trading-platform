@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { User } from '../../../core/models/user.model';
 import { AuthService } from '../../../core/service/auth.service';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,8 +15,9 @@ import { AuthService } from '../../../core/service/auth.service';
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    MatCardModule
-  ],
+    MatCardModule,
+    MatIcon
+],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

@@ -1,35 +1,98 @@
-<mat-toolbar color="primary">
-  <span>Trading Platform</span>
-  <span class="spacer"></span>
-  <span *ngIf="currentUser" class="user-info">
-    Welcome, {{ currentUser.username }}!
-  </span>
-  <button mat-button (click)="logout()">Logout</button>
-</mat-toolbar>
-
 <div class="dashboard-container">
-  <mat-card>
+  <div class="welcome-section">
+    <h1>Welcome back, {{ currentUser?.username }}!</h1>
+    <p class="subtitle">Here's what's happening with your portfolio today</p>
+  </div>
+
+  <div class="stats-grid">
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon">
+          <mat-icon>account_balance_wallet</mat-icon>
+        </div>
+        <div class="stat-details">
+          <span class="stat-label">Portfolio Value</span>
+          <span class="stat-value">$100,000.00</span>
+          <span class="stat-change positive">+0.00%</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon">
+          <mat-icon>trending_up</mat-icon>
+        </div>
+        <div class="stat-details">
+          <span class="stat-label">Total Holdings</span>
+          <span class="stat-value">0</span>
+          <span class="stat-change">stocks</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-icon">
+          <mat-icon>receipt_long</mat-icon>
+        </div>
+        <div class="stat-details">
+          <span class="stat-label">Total Orders</span>
+          <span class="stat-value">0</span>
+          <span class="stat-change">executed</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- User Information -->
+  <mat-card class="info-card">
     <mat-card-header>
-      <mat-card-title>Dashboard</mat-card-title>
-      <mat-card-subtitle>Welcome to your trading platform!</mat-card-subtitle>
+      <mat-card-title>Account Information</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div *ngIf="currentUser">
-        <h2>User Information</h2>
-        <p><strong>Username:</strong> {{ currentUser.username }}</p>
-        <p><strong>Email:</strong> {{ currentUser.email }}</p>
-        <p><strong>Role:</strong> {{ currentUser.role }}</p>
-        <p><strong>Member Since:</strong> {{ currentUser.createdAt | date }}</p>
+      <div class="info-grid" *ngIf="currentUser">
+        <div class="info-item">
+          <span class="info-label">Username</span>
+          <span class="info-value">{{ currentUser.username }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Email</span>
+          <span class="info-value">{{ currentUser.email }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Account Type</span>
+          <span class="info-value">{{ currentUser.role }}</span>
+        </div>
+        <div class="info-item" *ngIf="currentUser.createdAt">
+          <span class="info-label">Member Since</span>
+          <span class="info-value">{{ currentUser.createdAt | date:'medium' }}</span>
+        </div>
       </div>
-      
-      <div class="coming-soon">
-        <h3>Coming Soon:</h3>
-        <ul>
-          <li>Portfolio Overview</li>
-          <li>Stock Search & Trading</li>
-          <li>Order History</li>
-          <li>Real-time Market Data</li>
-        </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Coming Soon -->
+  <mat-card class="coming-soon-card">
+    <mat-card-content>
+      <h3>Coming Soon:</h3>
+      <div class="features-list">
+        <div class="feature-item">
+          <mat-icon color="primary">check_circle</mat-icon>
+          <span>Real-time Portfolio Tracking</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon color="primary">check_circle</mat-icon>
+          <span>Live Stock Market Data</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon color="primary">check_circle</mat-icon>
+          <span>Advanced Trading Features</span>
+        </div>
+        <div class="feature-item">
+          <mat-icon color="primary">check_circle</mat-icon>
+          <span>Performance Analytics</span>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

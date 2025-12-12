@@ -1,1 +1,99 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary" class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-left">
+      <button mat-button class="logo-button" routerLink="/dashboard">
+        <mat-icon>trending_up</mat-icon>
+        <span class="brand-name">Trading Platform</span>
+      </button>
+
+      <nav class="nav-links">
+        <button 
+          mat-button 
+          routerLink="/dashboard" 
+          routerLinkActive="active"
+          class="nav-link">
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </button>
+        
+        <button 
+          mat-button 
+          routerLink="/market" 
+          routerLinkActive="active"
+          class="nav-link">
+          <mat-icon>show_chart</mat-icon>
+          Market
+        </button>
+        
+        <button 
+          mat-button 
+          routerLink="/portfolio" 
+          routerLinkActive="active"
+          class="nav-link">
+          <mat-icon>account_balance_wallet</mat-icon>
+          Portfolio
+        </button>
+        
+        <button 
+          mat-button 
+          routerLink="/orders" 
+          routerLinkActive="active"
+          class="nav-link">
+          <mat-icon>receipt_long</mat-icon>
+          Orders
+        </button>
+      </nav>
+    </div>
+
+    <div class="navbar-right" *ngIf="currentUser">
+      <div class="balance-display">
+        <mat-icon class="balance-icon">account_balance</mat-icon>
+        <span class="balance-amount" *ngIf="!balanceLoading">
+          {{ balance | currency:'USD':'symbol':'1.2-2' }}
+        </span>
+        <span class="balance-loading" *ngIf="balanceLoading">
+          Loading...
+        </span>
+      </div>
+
+      <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-button">
+        <mat-icon>account_circle</mat-icon>
+        <span class="username">{{ currentUser.username }}</span>
+        <mat-icon class="dropdown-icon">arrow_drop_down</mat-icon>
+      </button>
+
+      <mat-menu #userMenu="matMenu" class="user-menu">
+        <div class="user-info">
+          <div class="user-details">
+            <strong>{{ currentUser.username }}</strong>
+            <small>{{ currentUser.email }}</small>
+          </div>
+        </div>
+        
+        <mat-divider></mat-divider>
+        
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        
+        <button mat-menu-item routerLink="/wallet">
+          <mat-icon>account_balance_wallet</mat-icon>
+          <span>Wallet</span>
+        </button>
+        
+        <button mat-menu-item routerLink="/settings">
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        
+        <mat-divider></mat-divider>
+        
+        <button mat-menu-item (click)="logout()" class="logout-button">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

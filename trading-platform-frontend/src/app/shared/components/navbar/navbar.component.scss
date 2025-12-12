@@ -1,0 +1,186 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 64px;
+  padding: 0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 100%;
+}
+
+// Left side
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  
+  mat-icon {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .brand-name {
+    display: none;
+    
+    @media (min-width: 768px) {
+      display: inline;
+    }
+  }
+}
+
+.nav-links {
+  display: none;
+  gap: 4px;
+  margin-left: 16px;
+  
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+  
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  &:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  &.active {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+// Right side
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.balance-display {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  
+  @media (min-width: 640px) {
+    display: flex;
+  }
+  
+  .balance-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .balance-amount {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .balance-loading {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+}
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .username {
+    display: none;
+    font-size: 14px;
+    font-weight: 500;
+    
+    @media (min-width: 640px) {
+      display: inline;
+    }
+  }
+  
+  .dropdown-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+::ng-deep .user-menu {
+  .mat-mdc-menu-content {
+    padding: 0;
+  }
+}
+
+.user-info {
+  padding: 16px;
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+    strong {
+      font-size: 15px;
+      color: #333;
+    }
+    
+    small {
+      font-size: 12px;
+      color: #666;
+    }
+  }
+}
+
+.logout-button {
+  color: #f44336;
+  
+  mat-icon {
+    color: #f44336;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-container {
+    padding: 0 8px;
+  }
+  
+  .navbar-right {
+    gap: 8px;
+  }
+}
