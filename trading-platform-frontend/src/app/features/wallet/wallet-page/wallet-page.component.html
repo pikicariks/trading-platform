@@ -1,0 +1,109 @@
+<div class="wallet-container">
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading your wallet...</p>
+  </div>
+
+  <div *ngIf="!loading && wallet" class="wallet-content">
+    <div class="page-header">
+      <h1>My Wallet</h1>
+      <p class="subtitle">Manage your funds and view transaction history</p>
+    </div>
+
+    <mat-card class="balance-card">
+      <mat-card-content>
+        <div class="balance-content">
+          <div class="balance-icon">
+            <mat-icon>account_balance_wallet</mat-icon>
+          </div>
+          <div class="balance-details">
+            <span class="balance-label">Available Balance</span>
+            <span class="balance-amount">{{ wallet.balance | currency:'USD':'symbol':'1.2-2' }}</span>
+            <span class="balance-currency">{{ wallet.currency }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="action-buttons">
+      <mat-card class="action-card deposit-card" (click)="openDepositDialog()">
+        <mat-card-content>
+          <mat-icon class="action-icon">add_circle</mat-icon>
+          <h3>Deposit</h3>
+          <p>Add funds to your wallet</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="action-card withdraw-card" (click)="openWithdrawDialog()">
+        <mat-card-content>
+          <mat-icon class="action-icon">remove_circle</mat-icon>
+          <h3>Withdraw</h3>
+          <p>Take out your funds</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card class="transactions-card">
+      <mat-card-header>
+        <mat-card-title>Transaction History</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="transactionsLoading" class="loading-transactions">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+
+        <div *ngIf="!transactionsLoading && transactions.length === 0" class="no-transactions">
+          <mat-icon>receipt_long</mat-icon>
+          <p>No transactions yet</p>
+          <p class="hint">Start by depositing funds to your wallet</p>
+        </div>
+
+        <div *ngIf="!transactionsLoading && transactions.length > 0" class="transactions-table">
+          <table mat-table [dataSource]="transactions" class="mat-elevation-z0">
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let transaction">
+                {{ transaction.createdAt | date:'short' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef>Type</th>
+              <td mat-cell *matCellDef="let transaction">
+                <span class="transaction-type" [ngClass]="getTransactionColor(transaction.transactionType)">
+                  {{ transaction.transactionType }}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef>Amount</th>
+              <td mat-cell *matCellDef="let transaction">
+                <span class="transaction-amount" [ngClass]="getTransactionColor(transaction.transactionType)">
+                  {{ getTransactionSign(transaction.transactionType) }}{{ transaction.amount | currency:'USD':'symbol':'1.2-2' }}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="balance">
+              <th mat-header-cell *matHeaderCellDef>Balance After</th>
+              <td mat-cell *matCellDef="let transaction">
+                {{ transaction.balanceAfter | currency:'USD':'symbol':'1.2-2' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef>Description</th>
+              <td mat-cell *matCellDef="let transaction">
+                {{ transaction.description || '-' }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,305 @@
+.wallet-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+
+  p {
+    color: #6b7280;
+    font-size: 16px;
+  }
+}
+
+.wallet-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-header {
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 8px 0;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0;
+  }
+}
+
+.balance-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+
+  mat-card-content {
+    padding: 32px;
+  }
+
+  .balance-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    .balance-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+
+      mat-icon {
+        font-size: 48px;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .balance-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .balance-label {
+        font-size: 14px;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .balance-amount {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .balance-currency {
+        font-size: 16px;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.action-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 12px;
+
+    .action-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #6b7280;
+    }
+  }
+
+  &.deposit-card {
+    border-color: #22c55e;
+
+    .action-icon {
+      color: #22c55e;
+    }
+
+    &:hover {
+      border-color: #22c55e;
+      background-color: rgba(34, 197, 94, 0.05);
+    }
+  }
+
+  &.withdraw-card {
+    border-color: #ef4444;
+
+    .action-icon {
+      color: #ef4444;
+    }
+
+    &:hover {
+      border-color: #ef4444;
+      background-color: rgba(239, 68, 68, 0.05);
+    }
+  }
+}
+
+.transactions-card {
+  mat-card-header {
+    margin-bottom: 16px;
+
+    mat-card-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+  }
+
+  .loading-transactions {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .no-transactions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+
+    mat-icon {
+      font-size: 64px;
+      width: 64px;
+      height: 64px;
+      color: #d1d5db;
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin: 8px 0;
+      color: #6b7280;
+      font-size: 16px;
+
+      &.hint {
+        font-size: 14px;
+        color: #9ca3af;
+      }
+    }
+  }
+
+  .transactions-table {
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+
+      th {
+        background-color: #f9fafb;
+        font-weight: 600;
+        color: #374151;
+        padding: 16px;
+      }
+
+      td {
+        padding: 16px;
+        color: #6b7280;
+      }
+
+      .transaction-type {
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        &.success {
+          background-color: rgba(34, 197, 94, 0.1);
+          color: #22c55e;
+        }
+
+        &.warn {
+          background-color: rgba(239, 68, 68, 0.1);
+          color: #ef4444;
+        }
+
+        &.primary {
+          background-color: rgba(59, 130, 246, 0.1);
+          color: #3b82f6;
+        }
+      }
+
+      .transaction-amount {
+        font-weight: 600;
+        font-size: 15px;
+
+        &.success {
+          color: #22c55e;
+        }
+
+        &.warn {
+          color: #ef4444;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wallet-container {
+    padding: 16px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .balance-card {
+    mat-card-content {
+      padding: 24px;
+    }
+
+    .balance-content {
+      flex-direction: column;
+      text-align: center;
+
+      .balance-details .balance-amount {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .transactions-table {
+    .mat-mdc-table {
+      min-width: 600px;
+    }
+  }
+}
