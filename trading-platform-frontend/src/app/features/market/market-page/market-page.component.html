@@ -1,1 +1,64 @@
-<p>market-page works!</p>
+<div class="market-container">
+  <div class="page-header">
+    <h1>Market Search</h1>
+    <p class="subtitle">Search for stocks and view real-time market data</p>
+  </div>
+
+  <app-stock-search (search)="onSearch($event)"></app-stock-search>
+
+  <div *ngIf="searchPerformed" class="search-results-section">
+    <h2>Search Results</h2>
+    <div *ngIf="searchResults.length === 0" class="no-results">
+      <mat-icon>search_off</mat-icon>
+      <p>No stocks found. Try a different symbol.</p>
+    </div>
+    <div *ngIf="searchResults.length > 0" class="stock-grid">
+      <app-stock-card
+        *ngFor="let quote of searchResults"
+        [quote]="quote"
+        (toggleWatchlist)="onToggleWatchlist($event)"
+        (trade)="onTrade($event)">
+      </app-stock-card>
+    </div>
+  </div>
+
+  <div class="popular-section">
+    <h2>Popular Stocks</h2>
+    
+    <div *ngIf="loadingPopular" class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Loading popular stocks...</p>
+    </div>
+
+    <div *ngIf="!loadingPopular" class="stock-grid">
+      <app-stock-card
+        *ngFor="let quote of popularQuotes"
+        [quote]="quote"
+        (toggleWatchlist)="onToggleWatchlist($event)"
+        (trade)="onTrade($event)">
+      </app-stock-card>
+    </div>
+  </div>
+
+  <div class="watchlist-section" *ngIf="watchlistQuotes.length > 0 || loadingWatchlist">
+    <h2>
+      <mat-icon>star</mat-icon>
+      Your Watchlist
+    </h2>
+
+    <div *ngIf="loadingWatchlist" class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Loading watchlist...</p>
+    </div>
+
+    <div *ngIf="!loadingWatchlist && watchlistQuotes.length > 0" class="stock-grid">
+      <app-stock-card
+        *ngFor="let quote of watchlistQuotes"
+        [quote]="quote"
+        [inWatchlist]="true"
+        (toggleWatchlist)="onToggleWatchlist($event)"
+        (trade)="onTrade($event)">
+      </app-stock-card>
+    </div>
+  </div>
+</div>

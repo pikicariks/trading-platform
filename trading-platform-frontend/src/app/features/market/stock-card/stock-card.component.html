@@ -1,1 +1,56 @@
-<p>stock-card works!</p>
+<mat-card class="stock-card">
+  <mat-card-content>
+    <div class="stock-header">
+      <div class="stock-info">
+        <h3 class="symbol">{{ quote.symbol }}</h3>
+        <p class="company-name">{{ quote.companyName }}</p>
+      </div>
+      <button 
+        mat-icon-button 
+        class="watchlist-btn"
+        [class.active]="inWatchlist"
+        (click)="onToggleWatchlist()"
+        [matTooltip]="inWatchlist ? 'Remove from watchlist' : 'Add to watchlist'">
+        <mat-icon>{{ inWatchlist ? 'star' : 'star_border' }}</mat-icon>
+      </button>
+    </div>
+
+    <div class="price-section">
+      <div class="current-price">{{ formatCurrency(quote.price) }}</div>
+      <div class="price-change" [ngClass]="changeClass">
+        <mat-icon>{{ changeIcon }}</mat-icon>
+        <span>{{ formatCurrency(quote.change) }} ({{ formatPercent(quote.changePercent) }})</span>
+      </div>
+    </div>
+
+    <div class="stock-details">
+      <div class="detail-item">
+        <span class="label">Open</span>
+        <span class="value">{{ formatCurrency(quote.open) }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">High</span>
+        <span class="value">{{ formatCurrency(quote.dayHigh) }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Low</span>
+        <span class="value">{{ formatCurrency(quote.dayLow) }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="label">Volume</span>
+        <span class="value">{{ formatNumber(quote.volume) }}</span>
+      </div>
+    </div>
+
+    <div class="card-actions">
+      <button 
+        mat-raised-button 
+        color="primary" 
+        class="trade-button"
+        (click)="onTrade()">
+        <mat-icon>shopping_cart</mat-icon>
+        Trade
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

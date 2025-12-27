@@ -24,7 +24,12 @@ export const routes: Routes = [
   path: 'wallet',
   loadComponent: () => import('./features/wallet/wallet-page/wallet-page.component').then(m => m.WalletPageComponent),
   canActivate: [authGuard]
-},
+  },
+  {
+    path: 'market',
+    loadComponent: () => import('./features/market/market-page/market-page.component').then(m => m.MarketPageComponent),
+    canActivate: [authGuard]
+  },
   {
     path: '**',
     redirectTo: '/dashboard'

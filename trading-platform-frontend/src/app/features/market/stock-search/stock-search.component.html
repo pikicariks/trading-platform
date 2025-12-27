@@ -1,1 +1,31 @@
-<p>stock-search works!</p>
+<mat-card class="search-card">
+  <mat-card-content>
+    <div class="search-container">
+      <mat-icon class="search-icon">search</mat-icon>
+      <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Enter stock symbol</mat-label>
+        <input 
+          matInput 
+          [formControl]="searchControl"
+          placeholder="e.g., AAPL, TSLA, MSFT"
+          (keydown)="onEnter($event)"
+          autocomplete="off">
+      </mat-form-field>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        class="search-button"
+        (click)="onSearch()">
+        Search
+      </button>
+    </div>
+    
+    <div class="search-hints">
+      <span class="hint-label">Popular:</span>
+      <button mat-button class="hint-chip" (click)="searchControl.setValue('AAPL'); onSearch()">AAPL</button>
+      <button mat-button class="hint-chip" (click)="searchControl.setValue('TSLA'); onSearch()">TSLA</button>
+      <button mat-button class="hint-chip" (click)="searchControl.setValue('MSFT'); onSearch()">MSFT</button>
+      <button mat-button class="hint-chip" (click)="searchControl.setValue('GOOGL'); onSearch()">GOOGL</button>
+    </div>
+  </mat-card-content>
+</mat-card>

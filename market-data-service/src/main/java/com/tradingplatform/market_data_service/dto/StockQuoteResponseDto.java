@@ -15,13 +15,13 @@ public class StockQuoteResponseDto implements Serializable {
 
     private String symbol;
     private String companyName;
-    private BigDecimal price;
-    private BigDecimal change;
-    private BigDecimal changePercent;
-    private BigDecimal previousClose;
-    private BigDecimal open;
-    private BigDecimal dayHigh;
-    private BigDecimal dayLow;
+    private double price;
+    private double change;
+    private double changePercent;
+    private double previousClose;
+    private double open;
+    private double dayHigh;
+    private double dayLow;
     private Long volume;
     private LocalDateTime lastUpdated;
 }

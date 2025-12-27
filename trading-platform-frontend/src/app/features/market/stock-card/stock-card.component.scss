@@ -1,0 +1,140 @@
+.stock-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  mat-card-content {
+    padding: 20px;
+  }
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+
+  .stock-info {
+    flex: 1;
+
+    .symbol {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 0 0 4px 0;
+    }
+
+    .company-name {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .watchlist-btn {
+    mat-icon {
+      color: #d1d5db;
+    }
+
+    &.active mat-icon {
+      color: #f59e0b;
+    }
+
+    &:hover mat-icon {
+      color: #f59e0b;
+    }
+  }
+}
+
+.price-section {
+  margin-bottom: 20px;
+
+  .current-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+  }
+
+  .price-change {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 600;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    &.positive {
+      color: #22c55e;
+
+      mat-icon {
+        color: #22c55e;
+      }
+    }
+
+    &.negative {
+      color: #ef4444;
+
+      mat-icon {
+        color: #ef4444;
+      }
+    }
+  }
+}
+
+.stock-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 16px;
+
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .label {
+      font-size: 12px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+  }
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+
+  .trade-button {
+    flex: 1;
+    height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+}
